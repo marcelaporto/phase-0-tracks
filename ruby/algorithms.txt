@@ -1,0 +1,17 @@
+- Get in front of the elevator door
+- Look for a button on the right or left side of the door 
+	- If there is only one round or square button, press it and wait for the elevator doors to open
+	- If there are two buttons, one with a an arrow pointing up, and another with an arrow pointing down, 
+		- You should see in which floor you are in (look around the door, speacilly above it, to discover in which floor are you in)
+		- Subtract the floor you should go with the floor you are in
+			- If the result is positive, press the arrow pointing up
+			- Otherwise, press the arrow pointing down
+- As soon as the doors open, enter the elevator, and look left and right for a chart with multiple buttons and numbers.
+- As you find the floor buttons, start looking at the buttons from the upper left corner. 
+	- If in the button the number is not the one you should go to, look at the button to the right. 
+	- Repeat till there are no numbers in the line, then start from the left again one line down from the one last examined
+- When you find the button with the number of the floor you should go to, press it
+- Stand still when the doors close
+- If someone enters the elevator in another floor, nod politely and give them space inside the elevator
+- Wait for the voice to call out the number of the floor you should go into, and, when that happens, get out of the elevator as soon as the doors open.
+
