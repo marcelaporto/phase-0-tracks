@@ -20,13 +20,15 @@ Pseudocode
 
 =end
 
-secret_password = "aaa bbbb"
+secret_password = "bcd"
 
 def encrypt(secret_password)
 	index = 0
 	while  index < secret_password.length
 		if secret_password[index] == " "
 			secret_password[index] = " "
+		elsif secret_password[index] == "z"
+				secret_password[index] = "a"
 		else
 			secret_password[index] = secret_password[index].next!
 		end
@@ -43,7 +45,9 @@ def decrypt(secret_password)
 	while  i < secret_password.length
 		if secret_password[i] == " "
 			secret_password[i] = " "
-		else #tenho que trabalhar nessa parte
+		elsif secret_password[i] == "a"
+				secret_password[i] = "z"
+		else 
 			 new_variable = secret_password[i] #string 
 			 number = alphabet.index(new_variable) - 1 #bring it back to index
 			 secret_password[i] = alphabet[number]
