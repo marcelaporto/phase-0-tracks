@@ -28,7 +28,7 @@ puts "Birth Year: #{birth_y}"
 puts "Garlic Lover? #{garlic}"
 puts "Health Insurence: #{health}"
 
-#Generate age to check with the age given
+#Generate variable to check if birth year matches with the age given
 birth_y_result = 2016 - birth_y
 
 #Turn strings into booleans
@@ -37,7 +37,6 @@ if garlic=="y"
 else
 		garlic=false
 end 	
-
 
 if health=="y"
 	health=true
@@ -49,5 +48,12 @@ end
 #Analisys of vampire condition
 if birth_y_result == age && (garlic || health)
 	result = "Probably not a vampire"
-elsif birth_y_result != age &&
-		
+	elsif birth_y_result != age && !(garlic || health)
+		result = "Probably a vampire"
+	elsif birth_y_result != age && !garlic && !health
+		result = "Almost certainly a vampire"	
+	elsif name == "Dra Cula" || name == "Tu Fang"
+		result = "Definitely a vampire."
+	else
+		result = "Results Inconclusive"
+end	
