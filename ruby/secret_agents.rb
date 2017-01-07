@@ -37,18 +37,21 @@ end
 
 encrypt (secret_password)
 
-alphabet = "abcdefghijklmnopqrstuvwxyz"
-
 def decrypt(secret_password)
 	i = 0
+	alphabet = "abcdefghijklmnopqrstuvwxyz"
 	while  i < secret_password.length
 		if secret_password[i] == " "
 			secret_password[i] = " "
-		else
-			new_variable = secret_password.index(i)
-			secret_password[i] = alphabet[new_variable.to_i - 1] 
+		else #tenho que trabalhar nessa parte
+			 new_variable = secret_password[i] #string 
+			 number = alphabet.index(new_variable) - 1 #bring it back to index
+			 secret_password[i] = alphabet[number]
 		end
-		index += 1
+		i += 1
 	end
 	puts secret_password
 end
+
+
+decrypt (secret_password)
