@@ -84,3 +84,6 @@ counter += 1
 
 end
 end
+
+puts nil
+puts "Actually, never mind! What do these questions have to do with anything? Let's all be friends."
