@@ -5,7 +5,7 @@ counter = 1
 
 while counter <= numbr.to_i
 
-puts nil
+puts nil # Adds extra space to the code
 puts "Welcome to our interview!"
 puts "What is your name"
 name = gets.chomp
@@ -32,7 +32,7 @@ new_alergie = gets.chomp
 if new_alergie == "sunshine" # QUESTION: is there a way to put all options in the same if statement?
 	puts "The result of the #{counter}º interview is: Almost definitely a vampire."
 	else
-		until new_alergie == "done"
+		while new_alergie != "done"
 			alergies << new_alergie #operation to insert element into array
 			break if new_alergie == "nothing"
 			puts "Any other alergies? (new alergie/done)" 
@@ -40,7 +40,8 @@ if new_alergie == "sunshine" # QUESTION: is there a way to put all options in th
 		end
 
 #Summary of the data collected
-puts "So what we now about #{name}"
+puts nil
+puts "So, what we now about #{name}"
 puts "Age: #{age}"
 puts "Birth Year: #{birth_y}"
 puts "Garlic Lover? #{garlic}"
@@ -78,6 +79,7 @@ if (name == "Dra Cula" || name == "Tu Fang")
 		result = "Results Inconclusive"
 end	
 
+puts nil
 puts "The result of the #{counter}º interview is: #{result}."
 
 counter += 1
