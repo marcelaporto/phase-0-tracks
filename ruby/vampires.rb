@@ -1,10 +1,11 @@
 
-wolves_like_sunshine = true
-wolves_like_garlic = true
-vampires_like_sunshine = false
-vampires_like_garlic = false
+puts "How many interviews are we doing today?"
+numbr = gets.chomp
+counter = 1
 
+while counter <= numbr.to_i
 
+puts nil
 puts "Welcome to our interview!"
 puts "What is your name"
 name = gets.chomp
@@ -24,12 +25,27 @@ garlic = gets.chomp
 puts "Would you like to enroll in the company’s health insurance? (y/n)"
 health = gets.chomp
 
+puts "Any alergies? (nothing/alergie)"
+alergies = Array.new
+new_alergie = gets.chomp
+
+if new_alergie == "nothing"
+	alergies = "nothing"
+else
+	until new_alergie == "done"
+	alergies << new_alergie
+	puts "Any other alergies? (new alergie/done)"
+	new_alergie = gets.chomp
+	end
+end
+
 #Summary of the data collected
 puts "So what we now about #{name}"
 puts "Age: #{age}"
 puts "Birth Year: #{birth_y}"
 puts "Garlic Lover? #{garlic}"
 puts "Health Insurance: #{health}"
+puts "Alergies: #{alergies.join(",")}"
 
 
 #Generate variable to check if birth year matches with the age given
@@ -49,20 +65,22 @@ else
 		health=false
 end 	
 
-
-
 #Analisys of vampire condition
-if birth_y_result == age.to_i && (garlic || health) 
-	result = "Probably not a vampire"
+if (name == "Dra Cula" || name == "Tu Fang")
+	result = "Definitely a vampire"
+	elsif birth_y_result == age.to_i && (garlic || health) 
+		result = "Probably not a vampire"
 	elsif birth_y_result != age.to_i && !(garlic || health)
 		result = "Probably a vampire"
 	elsif birth_y_result != age.to_i && !garlic && !health
 		result = "Almost certainly a vampire"	
-	elsif name == "Dra Cula" || name == "Tu Fang"
-		result = "Definitely a vampire."
 	else
 		result = "Results Inconclusive"
 end	
 
-puts "Your result after the interview is: #{result}"
+puts "The result of the #{counter}º interview is: #{result}."
+
+counter += 1
+
+end
 
