@@ -51,7 +51,7 @@ puts "Alergies: #{alergies.join(",")}" #built in method to convert array element
 #Generate variable to check if birth year matches with the age given
 birth_y_result = 2016 - birth_y.to_i
 
-
+ 
 #Turn strings into booleans
 if garlic=="y"
 	garlic=true
