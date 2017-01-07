@@ -4,10 +4,12 @@ wolves_like_garlic = true
 vampires_like_sunshine = false
 vampires_like_garlic = false
 
+=begin
 puts "Welcome to our interview!"
 puts "What is your name"
 name = gets.chomp
 puts "Nice to meet you #{name}!"
+=end
 
 puts "How old are you?"
 age = gets.chomp
@@ -15,6 +17,7 @@ age = gets.chomp
 puts "What year were you born?"
 birth_y = gets.chomp
 
+=begin
 puts "Our company cafeteria serves garlic bread. Should we order some for you? (y/n)"
 garlic = gets.chomp
 
@@ -26,10 +29,18 @@ puts "So what we now about #{name}"
 puts "Age: #{age}"
 puts "Birth Year: #{birth_y}"
 puts "Garlic Lover? #{garlic}"
-puts "Health Insurence: #{health}"
+puts "Health Insurance: #{health}"
+=end
 
 #Generate variable to check if birth year matches with the age given
-birth_y_result = 2016 - birth_y
+birth_y_result = 2016 - birth_y.to_i
+birth_y_result
+age
+p birth_y_result
+p age
+puts birth_y_result == age.to_i
+
+=begin
 
 #Turn strings into booleans
 if garlic=="y"
@@ -45,10 +56,11 @@ else
 end 	
 
 
+
 #Analisys of vampire condition
-if birth_y_result == age && (garlic || health)
+if birth_y_result == age && (garlic || health) #not getting it
 	result = "Probably not a vampire"
-	elsif birth_y_result != age && !(garlic || health)
+	elsif birth_y_result != age && (garlic || health)
 		result = "Probably a vampire"
 	elsif birth_y_result != age && !garlic && !health
 		result = "Almost certainly a vampire"	
@@ -57,3 +69,8 @@ if birth_y_result == age && (garlic || health)
 	else
 		result = "Results Inconclusive"
 end	
+
+gh = birth_y_result == age 
+puts "The result is #{gh}"
+puts "Your result after the interview is: #{result}"
+=end
