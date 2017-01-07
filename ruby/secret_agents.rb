@@ -1,5 +1,5 @@
 =begin
-pseudocode
+Pseudocode
 1) encrypt
 - Loop through each letter (word lenght)
 - When you get to the letter,
@@ -19,3 +19,16 @@ pseudocode
 - In the end, print 
 
 =end
+
+def encrypt("password")
+	i = 0
+	while i < password.lenght
+		if password[i] == " "
+			password = " "
+		else
+			password[i] = password[i].next!
+		end
+	i += 1
+	end
+	puts password
+end
