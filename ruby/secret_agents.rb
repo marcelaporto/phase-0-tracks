@@ -20,6 +20,8 @@ Pseudocode
 
 =end
 
+secret_password = "aaa bbbb"
+
 def encrypt(secret_password)
 	index = 0
 	while  index < secret_password.length
@@ -28,9 +30,25 @@ def encrypt(secret_password)
 		else
 			secret_password[index] = secret_password[index].next!
 		end
-	index += 1
+		index += 1
 	end
 	puts secret_password
 end
 
-encrypt ("aaaa bbbb")
+encrypt (secret_password)
+
+alphabet = "abcdefghijklmnopqrstuvwxyz"
+
+def decrypt(secret_password)
+	i = 0
+	while  i < secret_password.length
+		if secret_password[i] == " "
+			secret_password[i] = " "
+		else
+			new_variable = secret_password.index(i)
+			secret_password[i] = alphabet[new_variable.to_i - 1] 
+		end
+		index += 1
+	end
+	puts secret_password
+end
