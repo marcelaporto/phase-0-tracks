@@ -20,15 +20,17 @@ Pseudocode
 
 =end
 
-def encrypt("password")
-	i = 0
-	while i < password.lenght
-		if password[i] == " "
-			password = " "
+def encrypt(secret_password)
+	index = 0
+	while  index < secret_password.length
+		if secret_password[index] == " "
+			secret_password[index] = " "
 		else
-			password[i] = password[i].next!
+			secret_password[index] = secret_password[index].next!
 		end
-	i += 1
+	index += 1
 	end
-	puts password
+	puts secret_password
 end
+
+encrypt ("aaaa bbbb")
