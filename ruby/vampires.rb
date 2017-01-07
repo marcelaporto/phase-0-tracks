@@ -26,18 +26,18 @@ puts "Would you like to enroll in the company’s health insurance? (y/n)"
 health = gets.chomp
 
 puts "Any alergies? (nothing/alergie)"
-alergies = Array.new
+alergies = Array.new #define alergies as an array
 new_alergie = gets.chomp
 
-if new_alergie == "nothing"
-	alergies = "nothing"
-else
-	until new_alergie == "done"
-	alergies << new_alergie
-	puts "Any other alergies? (new alergie/done)"
-	new_alergie = gets.chomp
-	end
-end
+if new_alergie == "sunshine" # QUESTION: is there a way to put all options in the same if statement?
+	puts "The result of the #{counter}º interview is: Almost definitely a vampire."
+	else
+		until new_alergie == "done"
+			alergies << new_alergie #operation to insert element into array
+			break if new_alergie == "nothing"
+			puts "Any other alergies? (new alergie/done)" 
+			new_alergie = gets.chomp
+		end
 
 #Summary of the data collected
 puts "So what we now about #{name}"
@@ -45,7 +45,7 @@ puts "Age: #{age}"
 puts "Birth Year: #{birth_y}"
 puts "Garlic Lover? #{garlic}"
 puts "Health Insurance: #{health}"
-puts "Alergies: #{alergies.join(",")}"
+puts "Alergies: #{alergies.join(",")}" #built in method to convert array elements into strings, separated by commas
 
 
 #Generate variable to check if birth year matches with the age given
@@ -83,4 +83,4 @@ puts "The result of the #{counter}º interview is: #{result}."
 counter += 1
 
 end
-
+end
