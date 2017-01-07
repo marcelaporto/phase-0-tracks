@@ -1,4 +1,3 @@
-
 #Questions
 puts "What's the hamster name?"
 	name=gets.chomp
@@ -15,16 +14,25 @@ else
 	adoption=false
 end 	
 
-puts "Estimated age?"
-	age=gets.chomp
-	age.to_i 
 
-puts age
+puts "Estimated age?"
+	age = gets.chomp
+	if age == ""
+	  age = nil
+	end
+	age.to_i 
+	
+	
+if(age != nil) 
+  puts "This hamster is so old!"
+end
+	  
+puts "#{age}."
+
 
 #Final Results
-puts "#{age}"
 puts "This is the hamsters info: Name #{name}"
 puts "He's loud with a volume level of #{volume}"
 puts "The fur color is #{fur}"
 puts "Is he/she a good cadidate for adoption? #{adoption}"
-puts "The hamster is #{age}"
+puts "The hamster is #{age} years old"
