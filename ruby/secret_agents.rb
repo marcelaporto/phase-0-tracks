@@ -40,22 +40,24 @@ end
 encrypt (secret_password)
 
 def decrypt(secret_password)
-	i = 0
+	index = 0
 	alphabet = "abcdefghijklmnopqrstuvwxyz"
-	while  i < secret_password.length
-		if secret_password[i] == " "
-			secret_password[i] = " "
-		elsif secret_password[i] == "a"
-				secret_password[i] = "z"
+	while  index < secret_password.length
+		if secret_password[index] == " "
+			secret_password[index] = " "
+		elsif secret_password[index] == "a"
+				secret_password[index] = "z"
 		else 
-			 new_variable = secret_password[i] #string 
+			 new_variable = secret_password[index] #string 
 			 number = alphabet.index(new_variable) - 1 #bring it back to index
-			 secret_password[i] = alphabet[number]
+			 secret_password[index] = alphabet[number]
 		end
-		i += 1
+		index += 1
 	end
 	puts secret_password
 end
 
 
 decrypt (secret_password)
+
+#decrypt(encrypt(secret_password)) - Ruby does not have nested method calls. Only encrypt will function in this case
