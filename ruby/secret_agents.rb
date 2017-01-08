@@ -20,24 +20,22 @@ Pseudocode
 
 =end
 
-secret_password = "bcd"
+#secret_password = "bcd"
 
 def encrypt(secret_password)
 	index = 0
 	while  index < secret_password.length
 		if secret_password[index] == " "
 			secret_password[index] = " "
-		elsif secret_password[index] == "z"
-				secret_password[index] = "a"
-		else
-			secret_password[index] = secret_password[index].next!
+			elsif secret_password[index] == "z"
+					secret_password[index] = "a"
+			else
+				secret_password[index] = secret_password[index].next!
 		end
 		index += 1
 	end
-	puts secret_password
 end
 
-encrypt (secret_password)
 
 def decrypt(secret_password)
 	index = 0
@@ -45,19 +43,40 @@ def decrypt(secret_password)
 	while  index < secret_password.length
 		if secret_password[index] == " "
 			secret_password[index] = " "
-		elsif secret_password[index] == "a"
-				secret_password[index] = "z"
-		else 
-			 new_variable = secret_password[index] #string 
-			 number = alphabet.index(new_variable) - 1 #bring it back to index
-			 secret_password[index] = alphabet[number]
+			elsif secret_password[index] == "a"
+					secret_password[index] = "z"
+			else 
+				 new_variable = secret_password[index] #string 
+				 number = alphabet.index(new_variable) - 1 #bring it back to index
+				 secret_password[index] = alphabet[number]
 		end
 		index += 1
 	end
-	puts secret_password
 end
 
-
-decrypt (secret_password)
-
 #decrypt(encrypt(secret_password)) - Ruby does not have nested method calls. Only encrypt will function in this case
+
+# OUR DRIVER CODE
+
+# asks the user whether they would like to decrypt or encrypt a password
+puts "Hello secret agent. Would you like to decrypt or encrypt a password?"
+preference = gets.chomp
+
+# ask for the password
+puts "Could you give us the password, please"
+secret_password = gets.chomp
+
+# run methods
+if preference == "encrypt"
+	encrypt(secret_password)
+	elsif preference == "decrypt"
+		decrypt(secret_password)
+	else
+		puts "I am sorry, this does not make sense. Could you type in again, please?"
+end
+
+# give the user the result
+puts "The password in a/an #{preference} manner: #{secret_password}"
+
+# say bye
+puts "Thank you for using DBC services"
