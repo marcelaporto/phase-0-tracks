@@ -68,6 +68,21 @@ PSEUDOCODE
 	- Loop ends when it has gone through half of the length of the array
 =end
 
-	
+array = [1,4,5,7,2,5,58,2,6,8]
 
-	
+p array
+
+def sorting_method(array)
+  n = array.length
+  i = 0
+  while i < n
+    if array[i] < array [-i]
+      array << array [0]
+      array.shift
+    end
+  i += 1
+  end
+p array
+end
+
+p sorting_method(array)
