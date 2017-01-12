@@ -1,6 +1,6 @@
 joan_application_interiord = {
 	name:"Joanne",
-	street:"600 Bush St",
+	address:"600 Bush St",
 	email:"joanne_at_bush@gmail.com",
 	phone:"415-900-102",
 	blue_shade:"indigo",
@@ -32,3 +32,15 @@ puts "You're hired!"
 joan_application_interiord[:hired] = "hired"
 
 p joan_application_interiord
+
+
+#What happens if store a key in a variable, then access the hash using the variable?
+hey = :name  
+puts joan_application_interiord[hey] # it works!
+
+#What happens when try an expression like your_hash[:name] + your_hash[:address] (or whatever keys you used)? Does it affect the original hash?
+
+puts (joan_application_interiord[:name] + joan_application_interiord[:address])
+#=> Joanne600 Bush St
+
+p joan_application_interiord #does not change the hash
