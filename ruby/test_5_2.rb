@@ -5,23 +5,25 @@ joan_application_interiord = {
 	phone:"415-900-102",
 	blue_shade:"indigo",
 	wallpaper:["paisley", "Abstract woodsy scenes"],
-	ombre:"fierce",
+	ombre:"fierce"
 }
+
+p joan_application_interiord
 
 #DRIVER CODE
 
 #Change name
-puts = "Full name please!"
+puts "Full name please!"
 name = gets.chomp
 joan_application_interiord[:name] = name
 
 #Change blue shade
-puts = "What is you second favorite shade of blue?"
+puts "What is you second favorite shade of blue?"
 blue = gets.chomp
 joan_application_interiord[:blue_shade] = blue
 
 #Change ombre
-puts = "Are you sure? Ombre is from last year!"
+puts "Are you sure? Ombre is from last year!"
 ombre_2 = gets.chomp
 joan_application_interiord[:ombre] = ombre_2
 
@@ -29,3 +31,4 @@ joan_application_interiord[:ombre] = ombre_2
 puts "You're hired!"
 joan_application_interiord[:hired] = "hired"
 
+p joan_application_interiord
