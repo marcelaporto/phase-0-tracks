@@ -2,6 +2,9 @@
 PSEUDOCODE
 Ask the clients name, age, city, favorite color, kids (y/n), how far from a park" - Driver Code
 
+- Do the change thing
+	- Hint: Strings have methods that will turn them into symbols, which would be quite handy here.)
+- Do pseudocode
 
 
 =end
@@ -40,4 +43,28 @@ puts "park distance"
 park_distanc = gets.chomp
 clients_info[:park_distanc] = park_distanc.to_i
 
-p clients_info
+puts clients_info
+
+puts "Would you like to change anything?"
+change = gets.chomp
+
+if change == "No"
+	puts "Well, thanks for answering the questions!"
+else
+	until change == "No"
+	puts "What do you want to change?"
+	type_change = gets.chomp
+	# if to identify which changes does he want to make
+
+	puts "Please enter your new value"
+	new_value = gets.chomp
+	#clients_info[] =  new_value
+
+	puts "Anything else you would like to change?"
+	change = gets.chomp
+
+end	
+
+puts clients_info
+
+puts "Well, thank you for your time!"
