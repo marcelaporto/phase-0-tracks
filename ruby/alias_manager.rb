@@ -54,6 +54,14 @@ def swap_consonant(char)
 end
 
 
+def name_capitalize(name_array)
+new_name = name_array.join("")
+new_name = new_name.split
+new_name[0].capitalize!
+new_name[1].capitalize!
+new_name = new_name.join(" ") 
+end
+
 def new_name(name)
 #method that swap words
 name = swap_names(name)
@@ -73,11 +81,10 @@ name_array.map! do |char|
 	end
 end
 
-new_name = name_array.join("")
-new_name = new_name.upcase!
+#Capitalize first two letters of the names
+name_capitalize(name_array)
 
 end
-
 
 
 #DRIVER CODE
