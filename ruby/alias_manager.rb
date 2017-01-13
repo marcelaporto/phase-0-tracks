@@ -20,25 +20,29 @@ def swap_names(name)
 	split_name[0], split_name[1] = split_name[1], split_name[0]
 	split_name.join(" ")
 end
-
 def swap_vowel(char)
-	vowels = ["a", "e", "i", "o", "u"]
+	vowels = ["a", "e", "i", "o"]
 	i = 0
-	vowels.each do |vowel|
-		if char == vowel
-			char = vowels[i + 1]
+	if char == "u"
+		   char = "a"
+	else vowels.each do |vowel|
+		  if char == vowel
+			    char = vowels[i + 1]
 			return char
 		else
 		  i += 1
 		end
 	end
+	end
 
 end
 
 def swap_consonant(char)
-	consonants = ['b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'z'] #got it from the internet
+	consonants = ['b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x'] #got it from the internet
 	i = 0
-	consonants.each do |consonant|
+	if char == "z"
+	   char = "b"
+	else consonants.each do |consonant|
 		if char == consonant
 			char = consonants[i + 1]
 			return char
@@ -46,7 +50,7 @@ def swap_consonant(char)
 		  i += 1
 		end
 	end
-
+	end
 end
 
 
@@ -78,7 +82,7 @@ end
 
 #DRIVER CODE
 
-puts "Hello! What is your name?"
+puts "Hello! What is your full name? (Only first and last)"
 name = gets.chomp
 
 fake_name = new_name(name)
