@@ -49,20 +49,20 @@ def swap_consonant(char)
 
 end
 
-end
-
 
 def new_name(name)
-#method that makes swap words
+#method that swap words
 name = swap_names(name)
 
 #split into chars
+name = name.downcase!
 name_array = name.chars
 
-name_array.each do |char|
-	if char = " "
+# Conditional to aplly different methods
+name_array.map! do |char|
+	if char == " "
 		char = " "
-	elsif char = "a" || "e" || "i" || "o" || "u"
+	elsif char == "a" || char == "e" ||  char == "i" || char == "o" || char ==  "u" #tried to put it all in between () and wasn't succesful, why is that?
 		char = swap_vowel(char)
 	else
 		char = swap_consonant(char)
@@ -70,7 +70,8 @@ name_array.each do |char|
 end
 
 new_name = name_array.join("")
-#do I have to return?
+new_name = new_name.upcase!
+
 end
 
 
@@ -83,4 +84,4 @@ name = gets.chomp
 fake_name = new_name(name)
 
 puts "Your fake name is #{fake_name}"
-puts fake_name.class
+
