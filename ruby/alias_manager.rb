@@ -21,7 +21,7 @@ def swap_names(name)
 	split_name.join(" ")
 end
 def swap_vowel(char)
-	vowels = ["a", "e", "i", "o"]
+	vowels = ["a", "e", "i", "o", "u"]
 	i = 0
 	if char == "u"
 		   char = "a"
@@ -38,7 +38,7 @@ def swap_vowel(char)
 end
 
 def swap_consonant(char)
-	consonants = ['b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x'] #got it from the internet
+	consonants = ['b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'y', 'z'] #got it from the internet
 	i = 0
 	if char == "z"
 	   char = "b"
@@ -92,7 +92,32 @@ end
 puts "Hello! What is your full name? (Only first and last)"
 name = gets.chomp
 
-fake_name = new_name(name)
+#Arrays to store names
+real_names = []
+fake_names = []
 
-puts "Your fake name is #{fake_name}"
+#Counter of the times the program has generated a fake name
+n = 0
 
+until name == "Exit"
+	real_names << name 
+	
+	fake_name = new_name(name)
+
+	fake_names << fake_name
+
+	puts "Your fake name is #{fake_name}"
+
+	puts "Any other fake name you would like to generate?(Name/Exit)"
+	name = gets.chomp
+	n += 1
+end
+
+puts nil
+puts "Results:"
+
+i = 0
+while i < n
+	puts "#{fake_names[i]} is actually #{real_names[i]}"
+	i += 1
+end
