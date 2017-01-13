@@ -1,27 +1,36 @@
-university{
+
+
+university = {
 	department_health: {
-		nursery: "easy"
-		biology: "medium"
+		nursery: "easy",
+		biology: "medium",
 		medicine: "hard"
-	}
+	},
 	department_social_studies:{
-		philosophy: "easy"
-		history: "medium"
+		philosophy: "easy",
+		history: "medium",
 		economics: "hard"
 
-	}
+	},
 	department_math: {
-		engineering: "easy"
-		conceptual_math: "medium"
+		engineering: "easy",
+		conceptual_math: "medium",
 		physics: "hard"
-	}
-	Student_housing: ["dorms", "frat houses", "fraternity houses", "shared apartment"]
-	Teachers: ["Academic", "Part time workers in the market", "Helps around with extracurricular activities"]
-	Students: ["Lazy", "Focused", "Sports-Driven"]
-	Major_Sport: "Fantasy Futball"
-	Known_for: "Best history major in the US"
-	Miles_urban_city: 220
-	Tech_school: false
+	},
+	teachers_type: ["Academic", "Part time workers in the market", "Helps around with extracurricular activities"],
+	students: {
+	  types_students: {
+	    lazy: 0.55,
+	    focused:0.25, 
+	    sports_driven: 0.20
+	  },
+	  students_housing: ["dorms", "frat houses", "fraternity houses", "shared apartment"],
+	},
+	major_sport: "Fantasy Futball",
+	known_for: "Best history major in the US",
+	miles2urban_city: 220,
+	tech_school: false
 }
 
-print university
+
+puts university
