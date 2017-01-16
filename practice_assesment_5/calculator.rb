@@ -2,7 +2,11 @@
 
 
 def calculator(integer1,operator_s,integer2)
-	integer1.send(operator_s,integer2) #use of Object#send to convert string into operator
+	if operator_s != ("+" || "-" || "/" || "*" || "^" || "%")  #recognizes if the user inputs different symbols than the expected operators
+		return "cannot compute"
+	else
+		return integer1.send(operator_s,integer2) #use of Object#send to convert string into operator
+	end
 end
 
 i = 0 #counter
@@ -16,11 +20,24 @@ while operation != "Done"
 
 #Prepare variables to apply method
 array_of_variables = operation.split
-integer1 = array_of_variables[0].to_i
+
+begin #simple conditional function, to recognize if operation had only integeres or not, and gives the user another try, until he gets it right
+integer1 = Integer(array_of_variables[0]) #using Kernel#Integer, symbols and other random stuff are recognized, differently than #to_i
+integer2 = Integer(array_of_variables[2])	
+rescue
+	puts "Enter another operation please, with real numbers!"
+	operation = gets.chomp
+	array_of_variables = operation.split
+	retry
+#	integer2 = Integer(array_of_variables[2])
+#	integer1 = Integer(array_of_variables[0]) 
+end
+
 operator_s = array_of_variables[1]
-integer2 = array_of_variables[2].to_i
+
 
 result = calculator(integer1,operator_s,integer2)
+
 hash_calculator["#{operation}"] = result #Insert operation and result in hash 
 
 puts "The result is #{result}"
