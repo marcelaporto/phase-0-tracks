@@ -7,6 +7,7 @@ end
 
 puts "Please enter the operation you want to do"
 operation = gets.chomp
+operation = operation.delete(" ") #remove all whitespace between operation, if the user writes it like that
 
 #Prepare variables to apply method
 array_of_variables = operation.chars
