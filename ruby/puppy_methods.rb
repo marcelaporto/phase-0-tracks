@@ -27,9 +27,46 @@ class Puppy
   	puts "*high fives*"
   end
 
+  def initialize
+  	puts "Initializing new puppy instance.."
+  end
+
 end
 
-#DRIVER CODE
+class Fish
+
+def initialize
+  	puts "Initializing new fish instance.."
+end
+
+def  bubbles
+	puts "*Blop blop blop*"
+end
+
+def swivels
+	puts "*Swerve*"
+end
+	
+end
+
+fish_array = []
+
+50.times do
+	fish = Fish.new
+	fish_array << fish
+end
+
+#DRIVE CODE for Fish Class
+
+fish_array.each { |fish|
+	fish.bubbles
+	fish.swivels
+}
+
+
+
+=begin
+#DRIVER CODE for Puppy Class
 
 roxy = Puppy.new
 roxy.fetch("plastic_bone")
@@ -37,3 +74,5 @@ roxy.speak(4)
 roxy.roll_over
 roxy.dog_years(5)
 roxy.high_five("roxy")
+
+=end
