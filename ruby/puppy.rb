@@ -1,8 +1,8 @@
 =begin
-Class Design: Puppies
+Class Design: Puppy
 
 SPECIES ------------------------
-Puppies
+Puppies Cuties
 
 ATTRIBUTES ----------------
 Tongue lenght: varies
@@ -16,7 +16,7 @@ Jump
 Lick
 Bark
 Roll-over
-Play dead
+Play_dead
 Sniff
 		
 =end
