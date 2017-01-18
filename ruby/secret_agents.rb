@@ -27,10 +27,10 @@ def encrypt(secret_password)
 	while  index < secret_password.length
 		if secret_password[index] == " "
 			secret_password[index] = " "
-			elsif secret_password[index] == "z"
-					secret_password[index] = "a"
-			else
-				secret_password[index] = secret_password[index].next!
+		elsif secret_password[index] == "z"
+			secret_password[index] = "a"
+		else
+			secret_password[index] = secret_password[index].next!
 		end
 		index += 1
 	end
@@ -43,16 +43,16 @@ def decrypt(secret_password)
 	while  index < secret_password.length
 		if secret_password[index] == " "
 			secret_password[index] = " "
-			elsif secret_password[index] == "a"
-					secret_password[index] = "z"
-			else 
+		elsif secret_password[index] == "a"
+			secret_password[index] = "z"
+		else 
 				 new_variable = secret_password[index] #string 
 				 number = alphabet.index(new_variable) - 1 #bring it back to index
 				 secret_password[index] = alphabet[number]
+				end
+				index += 1
+			end
 		end
-		index += 1
-	end
-end
 
 #decrypt(encrypt(secret_password)) - Ruby does not have nested method calls. Only encrypt will function in this case
 
@@ -69,10 +69,10 @@ secret_password = gets.chomp
 # run methods
 if preference == "encrypt"
 	encrypt(secret_password)
-	elsif preference == "decrypt"
-		decrypt(secret_password)
-	else
-		puts "I am sorry, this does not make sense. Could you type in again, please?"
+elsif preference == "decrypt"
+	decrypt(secret_password)
+else
+	puts "I am sorry, this does not make sense. Could you type in again, please?"
 end
 
 # give the user the result

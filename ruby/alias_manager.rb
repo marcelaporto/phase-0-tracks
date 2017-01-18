@@ -31,13 +31,13 @@ def swap_vowel(char)
 		char = "a"
 	else vowels.each do |vowel|
 		if char == vowel
-		    char = vowels[i + 1]
+			char = vowels[i + 1]
 			return char
 		else
-		 	i += 1
+			i += 1
 		end
 	end
-	end
+end
 end
 
 
@@ -46,28 +46,28 @@ def swap_consonant(char)
 	i = 0
 	
 	if char == "z"
-	   char = "b"
+		char = "b"
 	else consonants.each do |consonant|
 		if char == consonant
 			char = consonants[i + 1]
 			return char
 		else
-		  i += 1
+			i += 1
 		end
 	end
-	end
+end
 end
 
 
 def name_capitalize(name_array)
 
-new_name = name_array.join("")
-new_name = new_name.split
+	new_name = name_array.join("")
+	new_name = new_name.split
 
-new_name[0].capitalize!
-new_name[1].capitalize!
+	new_name[0].capitalize!
+	new_name[1].capitalize!
 
-new_name = new_name.join(" ") 
+	new_name = new_name.join(" ") 
 
 end
 
