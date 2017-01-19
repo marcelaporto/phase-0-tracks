@@ -80,3 +80,37 @@ end
 
 print_list(grocery_list)
 
+
+=begin
+
+# REFLECT
+    
+* What did you learn about pseudocode from working on this challenge?
+
+    I learned that pseudocoding before each method, and inserting pseudocode before defining the method is really useful to make the method readeble.
+    
+
+* What are the tradeoffs of using arrays and hashes for this challenge?
+    
+    Arrays are good for making simple databases, but hashes are ideal when it comes to data that is connected with each other, that you can  access more easily.
+
+* What does a method return?
+    
+    It returns the last line of code inside its definition, or anything that is called "return", since return is a forced output from the method.
+
+
+* What kind of things can you pass into methods as arguments?
+    
+    Any kind of object you would like to work with inside the method. 
+
+
+* How can you pass information between methods?
+    
+    Through global scope variables 
+
+
+* What concepts were solidified in this challenge, and what concepts are still confusing?  
+
+    I still have a lot to learn about hashes and scope, but I got much more comfortable in using methods with multiple arguments, and different type of arguments.
+
+=end
