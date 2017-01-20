@@ -13,6 +13,21 @@ PSEUDOCODE
 	- Join it back to a string (define as a new variable and make sure it is a string with .class)
 - Give it back to the user
 
+
+CHANGES
+
+1. 
+In your swap_vowel and swap_consonant methods, can you think of a more efficient way to find the next letter 
+that does not involve iterating over the entire collection of vowels or consonants in order to find the letter 
+that you passed into the method? Hint...there is a method called .index() that you can use to find the position 
+of an element in an array or string. 
+
+2. 
+The bodies of your swap_vowel and swap_consonant methods are almost exactly the same with the exception of which 
+collection of letters you are using and the edge cases. Can you think of a way to make a more general method that 
+could handle either consonants or vowels, preventing you from having to repeat yourself at all? Hint...you can pass 
+the appropriate collection of letters into the method so that the appropriate array of letters is available to you.
+
 =end
 
 #Methods to create a fake name
@@ -105,25 +120,19 @@ puts "Hello! What is your full name? (Only first and last)"
 name = gets.chomp
 
 #Arrays to store names
-real_names = []
-fake_names = []
-
-#Counter of the times the program has generated a fake name
-n = 0
+name_transformation = Hash.new
 
 
 until name == "Exit"
-	real_names << name 
 	
 	fake_name = new_name(name)
 
-	fake_names << fake_name
-
+	name_transformation[name] = fake_name
+	
 	puts "Your fake name is #{fake_name}"
 
 	puts "Any other fake name you would like to generate?(Name/Exit)"
 	name = gets.chomp
-	n += 1
 end
 
 #Prints results when the user doesn't want to generate new names
@@ -131,8 +140,7 @@ end
 puts nil
 puts "Results:"
 
-i = 0
-while i < n
-	puts "#{fake_names[i]} is actually #{real_names[i]}"
-	i += 1
+
+name_transformation.each do |real_name, fake_name|
+	puts "#{fake_name} is actually #{real_name}"
 end
