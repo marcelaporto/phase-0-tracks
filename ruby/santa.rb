@@ -39,8 +39,10 @@ end
 
 def get_mad_at(reindeer)
 	puts "I am mad at you #{reindeer}! You know what you did."
-	reindeer_ranking.delete(reindeer)
-	reindeer_ranking << reindeer #not the most simple way though, I wonder why doing reindeer_rank(reindeer).index = -1 didn't work
+	
+	bad_reindeer = reindeer_ranking.delete(reindeer)
+	reindeer_ranking.insert(-1, bad_reindeer)
+
 end
 
 
