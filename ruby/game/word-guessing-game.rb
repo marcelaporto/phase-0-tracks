@@ -86,7 +86,7 @@ class Game
 		number_slots_array_display = number_slots_array.join (" ")
 	end
 
-	# We create a method to guess the word
+	# Create a method to guess the word
 	def check_guess(guess)
 
 		i = word.index(guess)
@@ -131,7 +131,7 @@ game = Game.new(player1_word)
 puts "Ok, please hand the game to player 2."
 
 #Player 2
-puts "Welcome player 2, your score so far is: #{game.number_slots_array_display} "
+puts "Welcome player 2,the word you are going to guess looks like this: #{game.number_slots_array_display} "
 
 guesses_counter = 0
 
@@ -142,18 +142,20 @@ while guesses_counter  < game.number_guesses do
 	puts "Please, make a guess (only one letter per guess)"
 	guess = gets.chomp
 
-	#If guess was already made(thus, this key is already in the "guesses_made" hash), don't lose a round and try again
+	#If guess was already made (thus, this key is already in the "guesses_made" hash), don't lose a round and try again
 	if game.guesses_made.key?(guess) == true 
 		puts "You have already guessed that!"
+	
 	else 
 		puts game.check_guess(guess)
 		guesses_counter  += 1
 
 	end
+
 	puts nil
 
-	 #Check if the number_slots_array is full of chars - if so, game is over; if not, go again
-	 break if (game.number_slots_array.include? "_") == false
+	#Check if the number_slots_array still have "_" - if not, game is over; otherwise, go again
+	break if (game.number_slots_array.include? "_") == false
 
 end
 
