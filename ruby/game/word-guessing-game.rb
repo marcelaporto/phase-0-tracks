@@ -6,7 +6,7 @@ Class : Game
 
 Methods:
 - initialize(word) 
-  Creates instance variables - word (that will be guessed), number_slots_array (tool to check guess), number_slots_array_display (string that will be printed to the user), 
+  Creates instance variables - word (that will be guessed), number_slots_array (tool to check guess),
   guesses_made (hash that defines which guesses were made, and if they were wrong or not), $word (global scope variable used to check if guess was correct).
   Output: none 
 
@@ -23,7 +23,7 @@ Methods:
 - check_guess(guess)
   Checks if letter guessed is inside the word (if yes, = true; if no, = false). 
   Add guess to the hash as the key, and the nature of it (true/false) as the value
-  Output(uses update_word to Output): number_slots_array_display
+  Output(uses update_word to Output): number_slots_array.join(" ") - String that dislays to the user
 
 - number_guesses (word)
   Takes the lenght of the word and adds two, to define how many tries does the player have
@@ -34,7 +34,7 @@ Methods:
 #Create class of game
 class Game
 
-	attr_reader :word_array, :number_slots_array_display, :guesses_made, :number_slots_array, :word
+	attr_reader :word_array, :guesses_made, :number_slots_array, :word
 
 
 	#Inside class of game, make method to enter the word
@@ -45,7 +45,6 @@ class Game
 		@word = word
 		@number_slots_array = Array.new(word.length).fill("_")
 		@guesses_made = Hash.new
-		@number_slots_array_display = number_slots_array.join(" ") #what will be displayed for the game
 		@word_array = @word.chars
 
 	end
@@ -87,7 +86,8 @@ class Game
 			
 		end
 
-		number_slots_array_display = number_slots_array.join (" ")
+		 number_slots_array.join (" ")
+
 	end
 
 	# Create a method to guess the word
@@ -114,7 +114,7 @@ class Game
 
 	#condition to determine number of guesses (number of guesses available is related to the length of the word)
 	def number_guesses
-		number_guesses = @word.length + 2
+		@word.length + 2
 	end
 
 
@@ -135,7 +135,7 @@ game = Game.new(player1_word)
 puts "Ok, please hand the game to player 2."
 
 #Player 2
-puts "Welcome player 2,the word you are going to guess looks like this: #{game.number_slots_array_display} "
+puts "Welcome player 2,the word you are going to guess looks like this: #{game.number_slots_array.join (" ")} "
 
 guesses_counter = 0
 
