@@ -1,8 +1,8 @@
 =begin
 Pseudocode was distributed throughout the code to make it more readable.
 
-Objective: make game in which player two has to figure out wich word it is
-Class : game
+Objective: make game in which one player enters a word, and the other player has to figure out wich word it is
+Class : Game
 
 Methods:
 - initialize(word): creates instance variables - word (that will be guessed), number_slots_array (tool to check guess), number_slots_array_display (string that will be printed to the user), 
@@ -22,9 +22,10 @@ Methods:
   Add guess to the hash as the key, and the nature of it (true/false) as the value
   Output: uses update_word to Output number_slots_array_display
 
-- number_guesses (word):
-  Takes the lenght of the word and adds two, to define how many tries does the player have
-  Output: number_guesses <integer>
+- number_guesses (word): Takes the lenght of the word and adds two, to define how many tries does 
+  the player have
+  Output: number_guesses -> <integer>
+
 =end
 
 #Create class of game
@@ -35,7 +36,7 @@ class Game
 
 	#Inside class of game, make method to enter the word
 	#	- The word is then separated into an array of chars
-	#	- We create a new array (game array), with the lenght of the word array, but it is only "_"
+	#	- We create a new array (number_slots_array), with the lenght of the word array, but it is only "_"
 	def initialize(word)
 
 		@word = word
