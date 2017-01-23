@@ -5,7 +5,8 @@ Objective: make game in which one player enters a word, and the other player has
 Class : Game
 
 Methods:
-- initialize(word): creates instance variables - word (that will be guessed), number_slots_array (tool to check guess), number_slots_array_display (string that will be printed to the user), 
+- initialize(word) 
+  Creates instance variables - word (that will be guessed), number_slots_array (tool to check guess), number_slots_array_display (string that will be printed to the user), 
   guesses_made (hash that defines which guesses were made, and if they were wrong or not), $word (global scope variable used to check if guess was correct).
   Output: none 
 
@@ -15,15 +16,17 @@ Methods:
   this letter, the player's guess, appears more than once in the word (thus, is_repeated_in_word = true).
   Output: boolean
 	  
-- update_word(guesses_made): updates the word according to the guesses_made hash, only inserting the ones that are true.
+- update_word(guesses_made)
+  Updates the word according to the guesses_made hash, only inserting the ones that are true.
   Output: number_slots_array
 
-- check_guess(guess): check if letter guess is inside secret word (if yes, = true; if no, = false). 
+- check_guess(guess)
+  Checks if letter guessed is inside the word (if yes, = true; if no, = false). 
   Add guess to the hash as the key, and the nature of it (true/false) as the value
-  Output: uses update_word to Output number_slots_array_display
+  Output(uses update_word to Output): number_slots_array_display
 
-- number_guesses (word): Takes the lenght of the word and adds two, to define how many tries does 
-  the player have
+- number_guesses (word)
+  Takes the lenght of the word and adds two, to define how many tries does the player have
   Output: number_guesses -> <integer>
 
 =end
