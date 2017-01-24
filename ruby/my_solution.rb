@@ -4,8 +4,11 @@
 # We spent [#] hours on this challenge.
 
 # EXPLANATION OF require_relative
-#
-#
+# Require: Gets another file => have to use the path
+# Require_relative: it will search in the same path as the file
+
+
+
 require_relative 'state_data'
 
 class VirusPredictor
