@@ -9,7 +9,6 @@ def calculator(integer1,operator_s,integer2)
 	end
 end
 
-i = 0 #counter
 hash_calculator = Hash.new #new hash
 
 puts "Please enter the operation you want to do"
@@ -22,7 +21,7 @@ while operation != "Done"
 array_of_variables = operation.split
 
 begin #simple conditional function, to recognize if operation had only integeres or not, and gives the user another try, until he gets it right
-integer1 = Integer(array_of_variables[0]) #using Kernel#Integer, symbols and other random stuff are recognized, differently than #to_i
+integer1 = Integer(array_of_variables[0]) #using Kernel#Integer, symbols and other random stuff aren't recognized, differently than #to_i
 integer2 = Integer(array_of_variables[2])	
 rescue
 	puts "Enter another operation please, with real numbers!"
@@ -45,12 +44,10 @@ puts "The result is #{result}"
 puts "Any other operations? Type it in or write down 'Done'"
 operation = gets.chomp
 
-i += 1
-
 end
 
 #Print out results
-puts "#{i} calculations performed"
+puts "#{hash_calculator.length} calculations performed"
 hash_calculator.each {|calculation, result| puts " #{calculation} = #{result}"}
 
 
