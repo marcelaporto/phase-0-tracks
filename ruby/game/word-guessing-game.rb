@@ -7,7 +7,13 @@
 class Game
 
   attr_reader :word_array, :guesses_made, :number_slots_array, :word, :array_repeated
- 
+
+  # FEEDBACK
+  # Currently, the only method you are calling from outside your class is the check_guess method. 
+  # Consider moving this method up to the top of your class (but still below your initialize method) 
+  # and adding a private declaration to protect your other methods from being accessed from outside the # class
+
+
   # Creates instance variables - word (that will be guessed), number_slots_array (tool to check guess),
   # guesses_made (hash that defines which guesses were made, and if they were wrong or not), word_array(word divided into an array).
   # Output: none 
@@ -18,6 +24,15 @@ class Game
     @word_array = @word.chars
     @array_repeated = Array.new
   end
+
+
+  # FEEDBACK
+  # is_repeated_in_word method, you can give a block to the count method in order to count 
+  # the number of items in an array that satisfy the condition in the block. This would prevent 
+  # you from having to map over the array to produce true/false values, having to iterate over those 
+  # values to remove the false ones, and then having to count the length of the resulting array, replacing 
+  # all of those with word_array.count{ |letter| letter == guess }   ...which would return the number of times 
+  # the guessed letter appeared in the word_array.
 
     
   # Creates an array in which the chars that have the player's guess becomes "true", otherwise they become
@@ -45,9 +60,9 @@ class Game
 
     @guesses_made.each do |guess, nature|
 
-      if (nature == true) && (is_repeated_in_word?(guess) == true)
+      if nature && is_repeated_in_word?(guess)
         @array_repeated.each { |index| number_slots_array[index] = guess} # will go through the array_repeated, and insert the guess in each part of number_slots_array that match
-      elsif (nature == true) && (is_repeated_in_word?(guess) == false)
+      elsif nature && !is_repeated_in_word?(guess)
         i = word.index(guess)
         number_slots_array[i] = guess
       end
