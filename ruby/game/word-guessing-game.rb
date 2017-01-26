@@ -26,7 +26,7 @@ class Game
     final_message
   end
 
-private
+  private
 
   def game_intro
     print "Welcome to the game player 1, insert your word\n"
