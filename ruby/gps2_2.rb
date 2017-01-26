@@ -49,21 +49,17 @@ p remove_item!(grocery_list, "cereal")
 
 def update_qty!(list, item, qty)
     counter = 0
-    list.each do |key, value|
-        break if key == item
-        counter += 1
-    end
-    if counter == list.length
-        response = "Sorry, that item isn't in the list"
-        return response
+    if list.include?(item)
+      list[item] = qty
     else
-        list[item] = qty
+      puts "Sorry, that item isn't in the list"
     end
     list
 end
 
 p update_qty!(grocery_list, "carrots", 3)
 p update_qty!(grocery_list, "beansprouts", 4)
+
 
 # Method to print a list and make it look pretty
 # input: grocery list
