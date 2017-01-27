@@ -21,7 +21,7 @@ for (var i = 0; i < horse_names.length; i++){
 
 console.log(horses);
 
-//  Trying to iterate through key/value of an object
+//  Trying to iterate through key/value of an object (Release 4)
 for (var key in horses) {
   // if (horses.hasOwnProperty(key)) {
     console.log(key + " -> " + horses[key]);
