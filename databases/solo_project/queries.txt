@@ -77,9 +77,44 @@ sqlite> SELECT * FROM albums;
 
 6) Join Tests
 
-http://www.sql-join.com/sql-join-types/
+https://www.tutorialspoint.com/sqlite/sqlite_using_joins.htm
 
+sqlite>  SELECT songs.name, songs.top_ten, albums.name, albums.year FROM songs CROSS JOIN albums ON songs.album_id = albums.id;
 
+Hotline Bling|true|Views|2016
+Marvin's Room|true|Take care|2011
+Worst Behavior|true|Nothing Was the Same|2013
+Hold On, We're Going Home|true|Nothing Was the Same|2013
+Controlla|true|Views|2016
+Lord Knows|true|Take care|2011
+One Dance|false|Views|2016
+Over My Dead Body|false|Take care|2011
+All me|false|Nothing Was the Same|2013
+Too Good|false|Views|2016
 
+sqlite>  SELECT songs.name, songs.top_ten, albums.name, albums.year FROM songs INNER JOIN albums ON songs.album_id = albums.id;
 
+Hotline Bling|true|Views|2016
+Marvin's Room|true|Take care|2011
+Worst Behavior|true|Nothing Was the Same|2013
+Hold On, We're Going Home|true|Nothing Was the Same|2013
+Controlla|true|Views|2016
+Lord Knows|true|Take care|2011
+One Dance|false|Views|2016
+Over My Dead Body|false|Take care|2011
+All me|false|Nothing Was the Same|2013
+Too Good|false|Views|2016
 
+sqlite>  SELECT songs.name, songs.top_ten, albums.name, albums.year FROM songs LEFT OUTER JOIN albums ON songs.album_id = albums.id;
+
+Hotline Bling|true|Views|2016
+Marvin's Room|true|Take care|2011
+Worst Behavior|true|Nothing Was the Same|2013
+Hold On, We're Going Home|true|Nothing Was the Same|2013
+Controlla|true|Views|2016
+Lord Knows|true|Take care|2011
+One Dance|false|Views|2016
+Over My Dead Body|false|Take care|2011
+All me|false|Nothing Was the Same|2013
+Too Good|false|Views|2016
+Grammy|false||
