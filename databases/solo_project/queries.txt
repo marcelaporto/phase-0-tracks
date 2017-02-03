@@ -1,0 +1,85 @@
+
+1)
+sqlite> SELECT * FROM songs;
+1|Hotline Bling|true|5
+2|Marvin's Room|true|3
+3|Worst Behavior|true|4
+4|Hold On, We're Going Home|true|4
+5|Controlla|true|5
+6|Lord Knows|true|3
+7|One Dance|false|5
+8|Over My Dead Body|false|3
+9|All me|false|4
+10|Too Good|false|5
+
+sqlite> SELECT * FROM albums;
+
+1|Comeback Season|2007
+2|So Far Gone|2009
+3|Take care|2011
+4|Nothing Was the Same|2013
+5|Views|2016
+6|More Life|2017
+
+
+2)
+sqlite> UPDATE albums SET year=2008 WHERE name="So Far Gone";
+sqlite> SELECT * FROM albums;
+
+1|Comeback Season|2007
+2|So Far Gone|2008
+3|Take care|2011
+4|Nothing Was the Same|2013
+5|Views|2016
+6|More Life|2017
+
+
+3)
+
+sqlite> SELECT * FROM songs, albums WHERE songs.album_id = albums.id;
+
+1|Hotline Bling|true|5|5|Views|2016
+2|Marvin's Room|true|3|3|Take care|2011
+3|Worst Behavior|true|4|4|Nothing Was the Same|2013
+4|Hold On, We're Going Home|true|4|4|Nothing Was the Same|2013
+5|Controlla|true|5|5|Views|2016
+6|Lord Knows|true|3|3|Take care|2011
+7|One Dance|false|5|5|Views|2016
+8|Over My Dead Body|false|3|3|Take care|2011
+9|All me|false|4|4|Nothing Was the Same|2013
+10|Too Good|false|5|5|Views|2016
+
+
+4)
+sqlite> SELECT songs.name, songs.top_ten, albums.name, albums.year FROM songs JOIN albums ON songs.album_id = albums.id;
+
+Hotline Bling|true|Views|2016
+Marvin's Room|true|Take care|2011
+Worst Behavior|true|Nothing Was the Same|2013
+Hold On, We're Going Home|true|Nothing Was the Same|2013
+Controlla|true|Views|2016
+Lord Knows|true|Take care|2011
+One Dance|false|Views|2016
+Over My Dead Body|false|Take care|2011
+All me|false|Nothing Was the Same|2013
+Too Good|false|Views|2016
+
+5)
+sqlite> DELETE FROM albums WHERE name="Comeback Season";
+
+sqlite> SELECT * FROM albums;
+2|So Far Gone|2008
+3|Take care|2011
+4|Nothing Was the Same|2013
+5|Views|2016
+6|More Life|2017
+
+
+6) Join Tests
+
+http://www.sql-join.com/sql-join-types/
+
+
+
+
+
