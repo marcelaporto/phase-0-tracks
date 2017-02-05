@@ -74,7 +74,7 @@ def view_all (db)
 	slangs.sort_by! { |each_slang| each_slang['slang'].downcase } # Sort by alphabetical order
 	
 	slangs.each do |slang_i|
-	  print "#{slang_i['slang']}\n\n Meaning: #{slang_i['meaning']}\n Type:#{slang_i['type']} \n Country: #{slang_i['name_country']} \n Are people using it now? #{slang_i['is_it_in']}\n Example: #{slang_i['example']} \n Last update request: #{slang_i['date_r']} \n\n\n "
+	  print "\n#{slang_i['slang']}\n\n Meaning: #{slang_i['meaning']}\n Type:#{slang_i['type']} \n Country: #{slang_i['name_country']} \n Are people using it now? #{slang_i['is_it_in']}\n Example: #{slang_i['example']} \n Last update request: #{slang_i['date_r']} \n\n\n "
 	end
 
 end
@@ -116,7 +116,6 @@ def get_data(db, new_slang)
 
 	new_slang[0].capitalize!
 	return new_slang
-
 end
 
 #Checks if slang already exists in the database
@@ -158,15 +157,25 @@ end
 # Search
 # def search_word(db)
 
+# Show update requests
+def show_update_requests(db)
+	slangs = db.execute("SELECT name, request, date_r FROM update_request")
+	slangs.sort_by! { |each_slang| each_slang['name'].downcase } # Sort by alphabetical order
+	
+	slangs.each do |slang_i|
+	  print "\n Slang: #{slang_i['name']}\n Request: #{slang_i['request']}\n Date:#{slang_i['date_r']}\n\n"
+	end
+end
+
+
 
 def home_message
-options = {1 => "See all the slangs", 2 => "Pick slang by condition", 3 => "Search for slang", 4 => "Update slang", 5 => "Add new slang",6 => "Exit"}
+options = {1 => "See all the slangs", 2 => "Pick slang by condition", 3 => "Search for slang", 4 => "Update slang", 5 => "Add new slang", 6 => "See update requests", 7 => "Exit"}
 print "\n\nThis is the slang dictionary! Hello! \n
 What would you like to do today? Please insert the number relative to the option:\n"
 options.each do |key, value|
 	puts "#{key} | #{value}"
 end
-print "\n"
 end
 
 
@@ -178,7 +187,7 @@ end
 home_message
 answer = gets.chomp.to_i
 
-until answer == 6 
+until answer == 7
 
 case answer
 	when 1
@@ -195,6 +204,8 @@ case answer
 		update_word(slang_db)
 	when 5
 		add_new(slang_db)
+	when 6
+		show_update_requests(slang_db)
 	else 
 		print "Want to try again maybe?\n"
 end
@@ -202,7 +213,7 @@ end
 home_message
 answer = gets.chomp.to_i
 
-break if answer == "Exit"
+break if answer == "Exit" # Infinite loop escape route
 end
 
 
