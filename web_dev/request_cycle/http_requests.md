@@ -1,30 +1,30 @@
 # What are some common HTTP status codes?
 
-----
-## Informational 1xx
+### Informational 1xx
 Request received, continuing process. This class of status code indicates a provisional response, consisting only of the Status-Line and optional headers, and is terminated by an empty line.
 
 * **100 Continue**: The server has received the request headers and the client should proceed to send the request body
 * **101 Switching Protocols**: The requester has asked the server to switch protocols and the server has agreed to do so
 
-## Successful 2xx
+
+### Successful 2xx
 This class of status codes indicates the action requested by the client was received, understood, accepted, and processed successfully.
 
 * **200 OK:** Standard response for successful HTTP requests
 
 * **202 Accepted:** The request has been accepted for processing, but the processing has not been completed. The request might or might not eventually be acted upon, as it might be disallowed when processing actually takes place.
 
-## Redirection 3xx
+### Redirection 3xx
 This class of status code indicates that further action needs to be taken by the user agent in order to fulfill the request.
 
--***300 Multiple Choice** : The request has more than one possible responses. User-agent or user should choose one of them.
+* **300 Multiple Choice** : The request has more than one possible responses. User-agent or user should choose one of them.
 * **301 Moved Permanently**:  The requested resource has been assigned a new permanent URI and any future references to this resource SHOULD use one of the returned URIs
 
 * **302 Found:** The requested resource resides temporarily under a different URI. Since the redirection might be altered on occasion, the client SHOULD continue to use the Request-URI for future requests.
 
 * **304 Not Modified**: If the client has performed a conditional GET request and access is allowed, but the document has not been modified, the server SHOULD respond with this status code.
 
-## Client Error 4xx
+### Client Error 4xx
 The 4xx class of status code is intended for cases in which the client seems to have erred.
 
 * **400 Bad Request**:  The request could not be understood by the server due to malformed syntax. The client SHOULD NOT repeat the request without modifications.
@@ -33,7 +33,7 @@ The 4xx class of status code is intended for cases in which the client seems to 
 
 * **404 Not Found**:  The server has not found anything matching the Request-URI. No indication is given of whether the condition is temporary or permanent.
 
-## Server Error 5xx
+### Server Error 5xx
 Cases in which the server is aware that it has erred or is incapable of performing the request
 
 * **500 Internal Server** Error: The server encountered an unexpected condition which prevented it from fulfilling the request
