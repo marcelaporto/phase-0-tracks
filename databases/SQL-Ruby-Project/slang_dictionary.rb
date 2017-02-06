@@ -211,8 +211,6 @@ def view_condition(db, condition)
 end
 
 
-
-
 # Search
 # def search_word(db)
 
@@ -253,10 +251,10 @@ case answer
 		print "What is your condition? Please write only the condition (eg: if I just want slangs that people are using, I'll write true) \n"
 		condition = gets.chomp
 		view_condition(slang_db, condition)
-	# when 3
-	# 	print "What slang do you want to find?\n"
-	# 	search = gets.chomp
-	# 	search(slang_db, search)
+	when 3
+		print "What slang do you want to find?\n"
+		condition = gets.chomp
+		view_condition(slang_db, condition)
 	when 4
 		update_word(slang_db)
 	when 5
