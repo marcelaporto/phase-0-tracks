@@ -60,16 +60,17 @@ slang_db.execute(create_type_cmd)
 
 # POPULATE DATABASE (IN THE END OF THE FILE)
 
+
 # METHODS TO VIEW AND EDIT DATABASE 
 
 # Shows all the slangs in the database
-# Input: Database
-# Steps: 
-# Executes SQLite3 to create nested Array (in each index there is a hash, in which there are the specifications of each slang)
+# Input: Database 
+# Steps: Executes SQLite3 to create nested Array (in each index there is a hash, in which there are the specifications of each slang)
 # Sort array by alphabetical order of the slang
 # Iterate through the array to print out Slangs and its specifications in a user friendly matter
 # Output: Strings
 def view_all (db)
+
 	slangs = db.execute("SELECT slang_dict.slang, slang_dict.meaning, type.type, country.name_country, slang_dict.is_it_in, slang_dict.example, update_request.date_r FROM slang_dict LEFT OUTER JOIN country ON slang_dict.country_id = country.id LEFT OUTER JOIN type ON slang_dict.type_id = type.id LEFT OUTER JOIN update_request ON slang_dict.update_request_time = update_request.date_r")
 	slangs.sort_by! { |each_slang| each_slang['slang'].downcase } # Sort by alphabetical order
 	
@@ -79,8 +80,10 @@ def view_all (db)
 
 end
 
-
 # Adds new slang to database
+# Input: Database; Output: String with the status
+# Steps: create new_slang array, get the data fromt the user (get_data method),
+# then check if it already exists in the database and add it or not (check_and_add method)
 def add_new(db)
 	new_slang = [ ]
 	get_data(db, new_slang)
@@ -88,13 +91,17 @@ def add_new(db)
 end 
 
 # Gets the data from the user
+# Asks questions to user to get data
+# Store it in an array 
 def get_data(db, new_slang)
 	print "\n New Slang: "
 	slang = gets.chomp
 	new_slang << slang
+
 	print "\n Meaning: "
 	meaning = gets.chomp
 	new_slang << meaning
+	
 	print "\n Type of Slang (1 = Acronym; 2 = Country; 3 = Urban; 4 = LGBTQ; 5 = Common): "
 	type_id = gets.chomp
 	new_slang << type_id
@@ -102,8 +109,9 @@ def get_data(db, new_slang)
 	print "\n Country(by number):\n"
 	countries = db.execute("SELECT * FROM country")
 	countries.each do |country|
-		puts "#{country['id']} | #{country['name_country']}"
+		puts " #{country['id']} | #{country['name_country']}"
 	end
+	print "\n"
 	country = gets.chomp
 	new_slang << country
 
@@ -114,24 +122,31 @@ def get_data(db, new_slang)
 	example = gets.chomp
 	new_slang << example
 
-	new_slang[0].capitalize!
 	return new_slang
 end
 
 #Checks if slang already exists in the database
 def check_and_add (db, new_slang)
-	slangs = db.execute("SELECT slang_dict.slang, slang_dict.meaning, type.type, country.name_country, slang_dict.is_it_in, slang_dict.example FROM slang_dict JOIN country ON slang_dict.country_id = country.id JOIN type ON slang_dict.type_id = type.id")
+	slangs = db.execute("SELECT slang_dict.slang FROM slang_dict")
+
+	if new_slang[2] == 1
+		new_slang[0].upcase!
+	else
+		new_slang[0].capitalize!
+	end
+
 	if slangs.any? {|array_of_hashes| array_of_hashes['slang'] == new_slang[0]}
-		print "I'm sorry, this is already in our dictionary! Do you maybe want to request an update?(Yes/No)\n"
+		print "\nI'm sorry, this is already in our dictionary! Do you maybe want to request an update?(Yes/No)\n"
 		answer = gets.chomp
 		if answer == "Yes"
-			 update_word(db)
 			print "OK!"
+			update_word(db)
 		end
 	else 
 		db.execute("INSERT INTO slang_dict (slang, meaning, type_id, country_id, is_it_in, example) VALUES ('#{new_slang[0]}', '#{new_slang[1]}', #{new_slang[2]}, '#{new_slang[3]}', '#{new_slang[4]}', '#{new_slang[5]}')") # not the best way - how to add a placeholder for the table????
 		print "New slang #{new_slang[0]} has been added to the database!" 
 	end
+
 end
 
 
@@ -151,12 +166,14 @@ def update_word(db)
 end
 
 
-# View by Condition
-def view_condition(db, condition)
+# Define in which column does the user want to refine the results
+def define_column(db, condition)
+
 	condition_d = condition.downcase
 	column = ''
 
-	# Create array to check in which column does the condition fit
+	# Generate arrays to make comparison - tried to do an array_creator(db), but it won't recognize all the arrays generated inside the method.
+	# And I can't do a nested each method to generate array because each data comes from a different table
 	column_in =['true', 'false']
 
 	column_countries = [ ]
@@ -177,16 +194,7 @@ def view_condition(db, condition)
 		column_slang << hash['slang'].downcase
 	end
 
-
 #  Do case statement with arrays and condition
-# p condition_d
-# p column_slang
-# p column_countries
-# p column_in
-# p column_type
-
-# p column_in.include? condition_d
-
 	case 
 	when (column_in.include? condition_d)
 		column = 'slang_dict.is_it_in'
@@ -200,7 +208,14 @@ def view_condition(db, condition)
 		return "We couldn't understand your condition!"
 	end
 
-#  I can refactor this by making the view all method use a condition (and view all has no condition), then using a check condition with the case statement above, and just running the view all method
+	column
+end
+
+# View database according to a specific condition
+def view_condition(db, condition)
+
+	column = define_column(db, condition)
+	
 	condition_db = db.execute("SELECT slang_dict.slang, slang_dict.meaning, type.type, country.name_country, slang_dict.is_it_in, slang_dict.example, update_request.date_r FROM slang_dict LEFT OUTER JOIN country ON slang_dict.country_id = country.id LEFT OUTER JOIN type ON slang_dict.type_id = type.id LEFT OUTER JOIN update_request ON slang_dict.update_request_time = update_request.date_r WHERE #{column}='#{condition}'")
 	condition_db.sort_by! { |each_slang| each_slang['slang'].downcase } # Sort by alphabetical order
 	
@@ -209,10 +224,6 @@ def view_condition(db, condition)
 	 end
 
 end
-
-
-# Search
-# def search_word(db)
 
 # Show update requests
 def show_update_requests(db)
@@ -225,14 +236,14 @@ def show_update_requests(db)
 end
 
 
-
+# Creates initial message so user can choose what to do
 def home_message
-options = {1 => "See all the slangs", 2 => "Pick slang by condition", 3 => "Search for slang", 4 => "Update slang", 5 => "Add new slang", 6 => "See update requests", 7 => "Exit"}
-print "\n\nThis is the slang dictionary! Hello! \n
-What would you like to do today? Please insert the number relative to the option:\n"
-options.each do |key, value|
-	puts "#{key} | #{value}"
-end
+	options = {1 => "See all the slangs", 2 => "Pick slang by condition", 3 => "Search for slang", 4 => "Update slang", 5 => "Add new slang", 6 => "See update requests", 7 => "Exit"}
+	print "\n\nThis is the slang dictionary! Hello! \nWhat would you like to do today? Please insert the number relative to the option:\n\n"
+	options.each do |key, value|
+		puts "#{key} | #{value}"
+	end
+	print "\n"
 end
 
 
@@ -241,6 +252,7 @@ end
 # Initial message, and place to go back when it ends
 home_message
 answer = gets.chomp.to_i
+
 
 until answer == 7
 
@@ -273,7 +285,6 @@ end
 
 
 # POPULATE DATABASE 
-
  # slang_db.execute("INSERT INTO country (name_country) VALUES ('USA')")
  # slang_db.execute("INSERT INTO country (name_country) VALUES ('BR')")
  # slang_db.execute("INSERT INTO country (name_country) VALUES ('UK')")
