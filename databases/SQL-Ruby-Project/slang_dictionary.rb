@@ -150,9 +150,68 @@ def update_word(db)
 
 end
 
+
 # View by Condition
-# def view_condition(db, condition)
-# end
+def view_condition(db, condition)
+	condition_d = condition.downcase
+	column = ''
+
+	# Create array to check in which column does the condition fit
+	column_in =['true', 'false']
+
+	column_countries = [ ]
+	countries = db.execute ("SELECT name_country FROM country")
+	countries.each do |hash|
+		column_countries << hash['name_country'].downcase
+	end
+	
+	column_type = [ ]
+	types = db.execute ("SELECT type FROM type")
+	types.each do |hash|
+		column_type << hash['type'].downcase
+	end
+
+	column_slang = []
+	slangs = db.execute("SELECT slang FROM slang_dict")
+	slangs.each do |hash|
+		column_slang << hash['slang'].downcase
+	end
+
+
+#  Do case statement with arrays and condition
+# p condition_d
+# p column_slang
+# p column_countries
+# p column_in
+# p column_type
+
+# p column_in.include? condition_d
+
+	case 
+	when (column_in.include? condition_d)
+		column = 'slang_dict.is_it_in'
+	when (column_type.include? condition_d)
+		column = 'type.type'
+	when (column_countries.include? condition_d)
+		column = 'country.name_country'
+	when (column_slang.include? condition_d)
+		column = ' slang_dict.slang'
+	else
+		return "We couldn't understand your condition!"
+	end
+
+#  I can refactor this by making the view all method use a condition (and view all has no condition), then using a check condition with the case statement above, and just running the view all method
+	condition_db = db.execute("SELECT slang_dict.slang, slang_dict.meaning, type.type, country.name_country, slang_dict.is_it_in, slang_dict.example, update_request.date_r FROM slang_dict LEFT OUTER JOIN country ON slang_dict.country_id = country.id LEFT OUTER JOIN type ON slang_dict.type_id = type.id LEFT OUTER JOIN update_request ON slang_dict.update_request_time = update_request.date_r WHERE #{column}='#{condition}'")
+	condition_db.sort_by! { |each_slang| each_slang['slang'].downcase } # Sort by alphabetical order
+	
+	 condition_db.each do |slang_i|
+	   print "\n\n#{slang_i['slang']}\n\n Meaning: #{slang_i['meaning']}\n Type:#{slang_i['type']} \n Country: #{slang_i['name_country']} \n Are people using it now? #{slang_i['is_it_in']}\n Example: #{slang_i['example']} \n Last update request: #{slang_i['date_r']} \n\n\n "
+	 end
+
+end
+
+
+
 
 # Search
 # def search_word(db)
@@ -182,8 +241,6 @@ end
 #  DRIVER CODE
 
 # Initial message, and place to go back when it ends
-
-
 home_message
 answer = gets.chomp.to_i
 
@@ -192,10 +249,10 @@ until answer == 7
 case answer
 	when 1
 		view_all(slang_db)
-	# when 2
-	# 	print "What is your condition? Please write only the condition (eg: if I just want slangs that people are using, I'll write true) \n"
-	# 	condition = gets.chomp
-	# 	view_condition(slang_db, condition)
+	when 2
+		print "What is your condition? Please write only the condition (eg: if I just want slangs that people are using, I'll write true) \n"
+		condition = gets.chomp
+		view_condition(slang_db, condition)
 	# when 3
 	# 	print "What slang do you want to find?\n"
 	# 	search = gets.chomp
