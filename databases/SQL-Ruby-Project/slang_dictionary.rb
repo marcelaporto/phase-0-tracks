@@ -3,7 +3,6 @@
 
 # REQUIRE GEM
 require 'sqlite3'
-require 'faker'
 
 # CREATE DATABASE
 slang_db = SQLite3::Database.new('slang_dict.db')
@@ -60,7 +59,6 @@ slang_db.execute(create_type_cmd)
 
 # POPULATE DATABASE (IN THE END OF THE FILE)
 
-
 # METHODS TO VIEW AND EDIT DATABASE 
 
 # Shows all the slangs in the database
@@ -91,8 +89,10 @@ def add_new(db)
 end 
 
 # Gets the data from the user
+# Input: empty array and database
 # Asks questions to user to get data
 # Store it in an array 
+# Output: Array filled with user's answers
 def get_data(db, new_slang)
 	print "\n New Slang: "
 	slang = gets.chomp
@@ -125,7 +125,11 @@ def get_data(db, new_slang)
 	return new_slang
 end
 
-#Checks if slang already exists in the database
+# Checks if slang already exists in the database
+# Input: database and array filled with user's answers
+# Steps: Get all the slangs in the database (just the name) - return a HASH; redefine name of the new slang to compare with existing slangs (upcase if acronym, capitalize otherwise)
+# iterate through HASH, check if new slang already exists in database; if so, tell user and offer to request an update; otherwise, insert in database and tell user
+# Output: string - status to the user 
 def check_and_add (db, new_slang)
 	slangs = db.execute("SELECT slang_dict.slang FROM slang_dict")
 
@@ -150,7 +154,11 @@ def check_and_add (db, new_slang)
 end
 
 
-# Request Update
+# Let's user request an update in a slang
+# Input: database
+# Steps: get information from user, insert in request_update table, with the date and time ; update slang in slang_dict table, and add last time someone requested an update for that word
+# Output: new entry in update_request table
+
 def update_word(db)
 	time = Time.new
 	
@@ -159,14 +167,35 @@ def update_word(db)
 	print "Ok then, please right down what you think should change, and we will revise it shortly:\n"
 	request = gets.chomp 
 	
-	print db.execute("INSERT INTO update_request (name, request, date_r) VALUES (?, ?, ?)", [slang, request, time.inspect.to_s]) 
-	print db.execute("SELECT * FROM update_request") 
+	db.execute("INSERT INTO update_request (name, request, date_r) VALUES (?, ?, ?)", [slang, request, time.inspect.to_s]) 
 	db.execute("UPDATE slang_dict SET update_request_time='#{time.inspect.to_s}' WHERE slang='#{slang}'") 
-
 end
 
 
+# View database according to a specific condition
+# Inputs: database, condition
+# Steps: Define in which column does the condition apply to (define_column method),
+# Create array with slangs that follow that condition (each one in it's own content hash)
+# Sort by alphabetical order and iterate through array to show user
+# Outputs: String - database filtered according to condition
+def view_condition(db, condition)
+
+	column = define_column(db, condition)
+	
+	condition_db = db.execute("SELECT slang_dict.slang, slang_dict.meaning, type.type, country.name_country, slang_dict.is_it_in, slang_dict.example, update_request.date_r FROM slang_dict LEFT OUTER JOIN country ON slang_dict.country_id = country.id LEFT OUTER JOIN type ON slang_dict.type_id = type.id LEFT OUTER JOIN update_request ON slang_dict.update_request_time = update_request.date_r WHERE #{column}='#{condition}'")
+	condition_db.sort_by! { |each_slang| each_slang['slang'].downcase } # Sort by alphabetical order
+	
+	 condition_db.each do |slang_i|
+	   print "\n\n#{slang_i['slang']}\n\n Meaning: #{slang_i['meaning']}\n Type:#{slang_i['type']} \n Country: #{slang_i['name_country']} \n Are people using it now? #{slang_i['is_it_in']}\n Example: #{slang_i['example']} \n Last update request: #{slang_i['date_r']} \n\n\n "
+	 end
+
+end
+
 # Define in which column does the user want to refine the results
+# Inputs: database, condition
+# Steps: generate arrays of each possible answers by category (is_it_in, type, country, slang - slang is inserted so method can be used to search slang as well)
+# Case statement to define which column it is, by testing if the condition is included in what array
+# Output: Column
 def define_column(db, condition)
 
 	condition_d = condition.downcase
@@ -203,26 +232,12 @@ def define_column(db, condition)
 	when (column_countries.include? condition_d)
 		column = 'country.name_country'
 	when (column_slang.include? condition_d)
-		column = ' slang_dict.slang'
+		column = 'slang_dict.slang'
 	else
-		return "We couldn't understand your condition!"
+		print "We couldn't understand your condition! Please try again"
+		exit # Couldn't find a way to exit method and get back to home_message without starting a loophole. This is the best command I found. Any tips?
 	end
-
 	column
-end
-
-# View database according to a specific condition
-def view_condition(db, condition)
-
-	column = define_column(db, condition)
-	
-	condition_db = db.execute("SELECT slang_dict.slang, slang_dict.meaning, type.type, country.name_country, slang_dict.is_it_in, slang_dict.example, update_request.date_r FROM slang_dict LEFT OUTER JOIN country ON slang_dict.country_id = country.id LEFT OUTER JOIN type ON slang_dict.type_id = type.id LEFT OUTER JOIN update_request ON slang_dict.update_request_time = update_request.date_r WHERE #{column}='#{condition}'")
-	condition_db.sort_by! { |each_slang| each_slang['slang'].downcase } # Sort by alphabetical order
-	
-	 condition_db.each do |slang_i|
-	   print "\n\n#{slang_i['slang']}\n\n Meaning: #{slang_i['meaning']}\n Type:#{slang_i['type']} \n Country: #{slang_i['name_country']} \n Are people using it now? #{slang_i['is_it_in']}\n Example: #{slang_i['example']} \n Last update request: #{slang_i['date_r']} \n\n\n "
-	 end
-
 end
 
 # Show update requests
@@ -235,8 +250,10 @@ def show_update_requests(db)
 	end
 end
 
-
 # Creates initial message so user can choose what to do
+# Inputs: None
+# Steps: Welcomes user, shows him menu of options
+# Output: String
 def home_message
 	options = {1 => "See all the slangs", 2 => "Pick slang by condition", 3 => "Search for slang", 4 => "Update slang", 5 => "Add new slang", 6 => "See update requests", 7 => "Exit"}
 	print "\n\nThis is the slang dictionary! Hello! \nWhat would you like to do today? Please insert the number relative to the option:\n\n"
@@ -250,9 +267,9 @@ end
 #  DRIVER CODE
 
 # Initial message, and place to go back when it ends
+def home_page(slang_db)
 home_message
 answer = gets.chomp.to_i
-
 
 until answer == 7
 
@@ -282,9 +299,12 @@ answer = gets.chomp.to_i
 
 break if answer == "Exit" # Infinite loop escape route
 end
+end
 
+home_page(slang_db)
 
-# POPULATE DATABASE 
+# POPULATE DATABASE (initial, to test and have some data to work with)
+
  # slang_db.execute("INSERT INTO country (name_country) VALUES ('USA')")
  # slang_db.execute("INSERT INTO country (name_country) VALUES ('BR')")
  # slang_db.execute("INSERT INTO country (name_country) VALUES ('UK')")
