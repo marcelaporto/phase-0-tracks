@@ -1,3 +1,5 @@
+var gif = document.getElementById('gif');
+gif.hidden = true;
 
 var colors = ['red', 'green', 'blue'];
 
@@ -18,8 +20,6 @@ function popUp (event){
 }
 
 
-var gif = document.getElementById('gif')
-gif.hidden = true;
 
 
 var photo = document.getElementById("lizard-photo");
