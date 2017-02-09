@@ -81,7 +81,8 @@ JavaScript enables you to freely pass functions around to be executed at a later
 ## Documentation
 
 1. Category: Events
-	**.change()**: The change event is sent to an element when its value changes. This event is limited to <input> elements, <textarea> boxes and <select> elements. For select boxes, checkboxes, and radio buttons, the event is fired immediately when the user makes a selection with the mouse. Ex:
+	**.change()**: The change event is sent to an element when its value changes. This event is limited to input elements, textarea boxes and select elements. For select boxes, checkboxes, and radio buttons, the event is fired immediately when the user makes a selection with the mouse. Ex:
+
 	```
 	$( "input[type='text']" ).change(function() {
 			// what happens when it changes
@@ -94,6 +95,7 @@ JavaScript enables you to freely pass functions around to be executed at a later
 		});
 	```
 	To trigger the event manually, call .dblclick() without an argument
+	
 	**.hover()**: The .hover() method binds handlers for both mouseenter and mouseleave events. You can use it to simply apply behavior to an element during the time the mouse is within the element. Ex:
 	```
 	$( "li.fade" ).hover(function() {
