@@ -91,13 +91,9 @@ JavaScript enables you to freely pass functions around to be executed at a later
 		});
 	```
 
-2. Category:  
-3. Category:  
-4. Category:  
-
 
 ## Extras
 
 1. Putting jQuery in no conflict mode with other libraries: https://learn.jquery.com/using-jquery-core/avoid-conflicts-other-libraries/
-
+2. By default, all HTML elements have a static position, and cannot be moved. To manipulate the position, remember to first set the CSS position property of the element to relative, fixed, or absolute!
 
