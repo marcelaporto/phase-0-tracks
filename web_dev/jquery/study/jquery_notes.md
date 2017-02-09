@@ -1,23 +1,3 @@
-## Plan to takle JQuery
-1. Beggin with basic explanation (40min)
-	* https://jquery.com/
-	* https://learn.jquery.com/
-	* http://www.w3schools.com/jquery/
-	* https://pt.wikipedia.org/wiki/JQuery
-2. See documentation (10min)
-	* https://api.jquery.com/
-3. Watch Live code (40min)
-	* http://www.w3schools.com/jquery/jquery_examples.asp
-	* https://www.youtube.com/watch?v=hMxGhHNOkCU (introduction)
-	* https://www.youtube.com/watch?v=G-POtu9J-m4 (event biding)
-	* https://www.youtube.com/watch?v=Cc3K2jDdKTo (writing better, smarter code)
-	* https://www.youtube.com/watch?v=1nWrIBB_bMA (Ex: tab creation)
-	* https://www.youtube.com/watch?v=KkzVFB3Ba_o (Ex: image slider)
-4. Do quiz then exercise (30 min)
-	* http://www.w3schools.com/jquery/jquery_quiz.asp
-	* https://www.codecademy.com/pt/courses/javascript-beginner-en-x1onO/0/1?curriculum_id=50b91eda28c2fb212300039e
-	* https://www.codecademy.com/pt/courses/web-beginner-en-X7bpO/0/1?curriculum_id=50b91eda28c2fb212300039e
-	* https://www.codecademy.com/pt/courses/web-beginner-en-de7ew/0/1?curriculum_id=50b91eda28c2fb212300039e
 
 
 ## Theory
@@ -110,3 +90,23 @@ JavaScript enables you to freely pass functions around to be executed at a later
 1. Putting jQuery in no conflict mode with other libraries: https://learn.jquery.com/using-jquery-core/avoid-conflicts-other-libraries/
 2. By default, all HTML elements have a static position, and cannot be moved. To manipulate the position, remember to first set the CSS position property of the element to relative, fixed, or absolute!
 
+## Plan to tackle JQuery
+1. Beggin with basic explanation (40min)
+	* https://jquery.com/
+	* https://learn.jquery.com/
+	* http://www.w3schools.com/jquery/
+	* https://pt.wikipedia.org/wiki/JQuery
+2. See documentation (10min)
+	* https://api.jquery.com/
+3. Watch Live code (40min)
+	* http://www.w3schools.com/jquery/jquery_examples.asp
+	* https://www.youtube.com/watch?v=hMxGhHNOkCU (introduction)
+	* https://www.youtube.com/watch?v=G-POtu9J-m4 (event biding)
+	* https://www.youtube.com/watch?v=Cc3K2jDdKTo (writing better, smarter code)
+	* https://www.youtube.com/watch?v=1nWrIBB_bMA (Ex: tab creation)
+	* https://www.youtube.com/watch?v=KkzVFB3Ba_o (Ex: image slider)
+4. Do quiz then exercise (30 min)
+	* http://www.w3schools.com/jquery/jquery_quiz.asp
+	* https://www.codecademy.com/pt/courses/javascript-beginner-en-x1onO/0/1?curriculum_id=50b91eda28c2fb212300039e
+	* https://www.codecademy.com/pt/courses/web-beginner-en-X7bpO/0/1?curriculum_id=50b91eda28c2fb212300039e
+	* https://www.codecademy.com/pt/courses/web-beginner-en-de7ew/0/1?curriculum_id=50b91eda28c2fb212300039e
