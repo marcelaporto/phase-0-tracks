@@ -61,8 +61,8 @@ In practice, it is better to place your code ina a separte JS file and load it o
 3.
 
 * Adding and Removing an HTML Class
-	* Add: $("<element>").addClass("<class/style>")
-	* Remove: $("<element>").removeClass("<style/class>")
+	* Add: `$("<element>").addClass("<class/style>")`
+	* Remove: `$("<element>").removeClass("<style/class>")`
 
 * Callbacks and Functions
 JavaScript enables you to freely pass functions around to be executed at a later time. A callback is a function that is passed as an argument to another function and is executed after its parent function has completed. Callbacks are special because they patiently wait to execute until their parent finishes.
