@@ -31,8 +31,10 @@ To make it all work, we need to tell our HTML file to include the jQuery library
 
 In the terminal: `npm install jquery`
 
-```<script src = "node_modules/jquery/dist/jquery.min.js"> </script> // jquery script always first!!
+```
+<script src = "node_modules/jquery/dist/jquery.min.js"> </script> // jquery script always first!!
 <script src="jquery.js"></script>
+
 ```
 
 2.
@@ -46,9 +48,11 @@ document tells jQuery to work with our HTML
 
 The code you put inside this function will run as soon as your browser has loaded your page.
 Ex:
-```$( document ).ready(function() {
+```
+$( document ).ready(function() {
     console.log( "ready!" );
 });
+
 ```
 The jQuery library exposes its methods and properties via two properties of the window object called jQuery and $. $ is simply an alias for jQuery and it's often employed because it's shorter and faster to write.
 
@@ -57,8 +61,8 @@ In practice, it is better to place your code ina a separte JS file and load it o
 3.
 
 * Adding and Removing an HTML Class
-Add: $("<element>").addClass("<class/style>")
-Remove: $("<element>").removeClass("<style/class>")
+	* Add: $("<element>").addClass("<class/style>")
+	* Remove: $("<element>").removeClass("<style/class>")
 
 * Callbacks and Functions
 JavaScript enables you to freely pass functions around to be executed at a later time. A callback is a function that is passed as an argument to another function and is executed after its parent function has completed. Callbacks are special because they patiently wait to execute until their parent finishes.
@@ -67,25 +71,32 @@ JavaScript enables you to freely pass functions around to be executed at a later
 	When `$.get()` finishes getting the page `myhtmlpage.html`, it executes the `myCallBack()` function, which is just a regular function.
 	* Callback with Arguments
 	To defer executing myCallBack() with its parameters, you can use an anonymous function as a wrapper. 
-	```$.get( "myhtmlpage.html", function() {
+	```
+	$.get( "myhtmlpage.html", function() {
 		myCallBack( param1, param2 );
     });
+    
     ```
 
 ## Documentation
 
 1. Category: Events
-	* *.change()*: The change event is sent to an element when its value changes. This event is limited to <input> elements, <textarea> boxes and <select> elements. For select boxes, checkboxes, and radio buttons, the event is fired immediately when the user makes a selection with the mouse. Ex:
-	```$( "input[type='text']" ).change(function() {
+	**.change()**: The change event is sent to an element when its value changes. This event is limited to <input> elements, <textarea> boxes and <select> elements. For select boxes, checkboxes, and radio buttons, the event is fired immediately when the user makes a selection with the mouse. Ex:
+	```
+	$( "input[type='text']" ).change(function() {
 			// what happens when it changes
   		});
-	*  *.dblclick()*: The dblclick event is sent to an element when the element is double-clicked. Any HTML element can receive this event. Ex:
-	```$( "#target" ).dblclick(function() {
+  	```
+	**.dblclick()**: The dblclick event is sent to an element when the element is double-clicked. Any HTML element can receive this event. Ex:
+	```
+	$( "#target" ).dblclick(function() {
   			alert( "Handler for .dblclick() called." );
 		});
+	```
 	To trigger the event manually, call .dblclick() without an argument
-	* *.hover()*: The .hover() method binds handlers for both mouseenter and mouseleave events. You can use it to simply apply behavior to an element during the time the mouse is within the element. Ex:
-	```$( "li.fade" ).hover(function() {
+	**.hover()**: The .hover() method binds handlers for both mouseenter and mouseleave events. You can use it to simply apply behavior to an element during the time the mouse is within the element. Ex:
+	```
+	$( "li.fade" ).hover(function() {
  		 $( this ).fadeOut( 100 );
   		$( this ).fadeIn( 500 );
 		});
