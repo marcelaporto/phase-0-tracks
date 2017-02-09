@@ -1,0 +1,31 @@
+
+body{
+	font-family: 'Open Sans', sans-serif; 
+}
+
+
+h1{
+	font-variant: small-caps;
+}
+
+#image{
+	height:100px;
+    width:100px;
+    position: relative;
+}
+
+p{
+	background: gray;
+	color: black;
+	border: 3px solid light gray;
+	text-align: center;
+	font-weight: bold;
+}
+
+#helloyall{
+	display: none;
+	padding: 10px;
+	background: gray;
+	color: white;
+	font-variant: small-caps;
+}
