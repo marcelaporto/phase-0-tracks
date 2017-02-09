@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Information about each student</title>
+</head>
+<body>
+
+<h1><%= params[:search] %></h1>
+
+     <ul>
+    <% @students_by_name.each do |student| %>
+      <li><%= student['age'] %></li>
+      <li><%= student['campus'] %></li>
+    <% end %>
+  </ul>
+
+
+</body>
+</html>
