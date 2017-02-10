@@ -1,9 +1,58 @@
-## Prior Study I need to Do
+## Prior Study I need to do
 
 * https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-14-04
 * https://www.digitalocean.com/community/tutorials/how-to-set-up-a-host-name-with-digitalocean
 * https://www.digitalocean.com/community/tutorials/additional-recommended-steps-for-new-ubuntu-14-04-servers
 * https://www.digitalocean.com/community/tutorials/5-common-server-setups-for-your-web-application
+
+
+* https://learnrubythehardway.org/book/ex51.html
+* https://learnrubythehardway.org/book/ex52.html
+* http://ruby.about.com/od/sinatra/a/sinatra2.htm
+* https://www.packtpub.com/books/content/building-tiny-web-applications-ruby-using-sinatra
+* http://www.sinatrarb.com/intro.html
+* http://guides.railsgirls.com/sinatra-app
+* https://www.sitepoint.com/just-do-it-learn-sinatra-i/
+* http://www.sinatrarb.com/configuration.html
+
+
+## How the Web Works
+
+
+1. Getting Input from a Browser
+On the ruby file: create a post method
+On the HTML: create a form
+
+2. Creating a View Template
+As programmers we have to find common patterns and try to automate them away. One common pattern is the HTML that is at the beginning and the end of each of our .erb files. You shouldn't have to type that every single time you want to create a new view, and you should be able to change that content in one place to change all the pages. The solution to this is a concept called a "layout template", which we'll create in views/layout.erb:
+
+```
+<html>
+<head>
+    <title>Gothons From Planet Percal #25</title>
+</head>
+<body>
+
+<%= yield %>
+
+</body>
+</html>
+```
+This simply takes the common HTML at the top and bottom of every template and puts it into one file. The code <%= yield %> is a Ruby thing that says to stop there and run the other view then come back.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
  Why is it considered a bad idea to run programs as the root user on a Linux system?
 
