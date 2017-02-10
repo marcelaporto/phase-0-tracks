@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>The Public Slang Database</title>
+</head>
+<body>
+<h1>The Public Slang Database</h1>
+<h2>Welcome!</h2>
+<h3>Featured slang of the day</h3>
+<ul>
+<% slang = @slangs[rand(0 .. (@slangs.length - 1))] %>
+
+<h4><%= slang['slang'] %> </h4>
+<li>Meaning: <%= slang['meaning'] %> </li> 
+<li>Type: <%= slang['type'] %> </li> 
+<li>Country: <%= slang['name_country'] %> </li>
+<li>Are people using it right now?  <%= slang['is_it_in'] %> </li>
+<li>Example:  <%= slang['example'] %></li>
+<li>Last update request:  <%= slang['date_r'] %></li>
+
+</ul>
+
+<h3>Comics</h3>
+
+<img src= "<%= @images[rand(0 .. 3)] %>" >
+
+
+</body>
+</html>
