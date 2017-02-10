@@ -1,0 +1,17 @@
+<!-- This simply takes the common HTML at the top and bottom of every template and puts it into one file. The code <%= yield %> is a Ruby thing that says to stop there and run the other view then come back. By putting this into views/layout.erb we're telling Sinatra to "wrap" all of our templates with this HTML. -->
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>The Public Slang Database</title>
+	<link rel="stylesheet" type="text/css" href="style.css"/>
+	<script type="text/javascript" src= "script.js"></script>
+</head>
+<header></header>
+<body>
+
+<%= yield %>
+
+</body>
+<footer></footer>
+</html>
