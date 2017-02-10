@@ -1,13 +1,40 @@
-<!-- This simply takes the common HTML at the top and bottom of every template and puts it into one file. The code <%= yield %> is a Ruby thing that says to stop there and run the other view then come back. By putting this into views/layout.erb we're telling Sinatra to "wrap" all of our templates with this HTML. -->
-
 <!DOCTYPE html>
 <html>
 <head>
 	<title>The Public Slang Database</title>
+	<script src = "/node_modules/jquery/dist/jquery.min.js"></script>    
+	<script src = "script.js"> </script>
 	<link rel="stylesheet" type="text/css" href="style.css"/>
-	<script type="text/javascript" src= "script.js"></script>
+
 </head>
-<header></header>
+<header>
+
+<div class="tabs">
+
+    <ul class="tab-links">
+        <li class="tab-links" id = "tab1">The Database</li>
+        <li class="tab-links" id = "tab2">Contribute</li>
+    </ul>
+
+	<div class="tab-content">
+
+        <div id="tab1" class="tab">
+			<p class = "rolldown"><a href="/all">View the entire database</a></p>
+			<p class = "rolldown"><a href="/filter">Filter database by condition</a></p>
+			<p class = "rolldown"><a href="/search">Search</a></p>
+        </div>
+ 
+ 
+        <div id="tab2" class="tab">
+        	<p class = "rolldown"><a href="/addnew">Add a new slang</a></p>
+			<p class = "rolldown"><a href="/update/request">Request an update</a></p>
+			<p class = "rolldown"><a href="/updates">See all requests and vote</a></p>
+        </div>
+    </div>
+</div>
+
+</header>
+
 <body>
 
 <%= yield %>

@@ -4,26 +4,18 @@
 	<title>The Public Slang Database</title>
 </head>
 <body>
-<h1>The Public Slang Database</h1>
-<h2>Welcome!</h2>
-<h3>Featured slang</h3>
-<ul>
-<% slang = @slangs[rand(0 .. (@slangs.length - 1))] %>
 
-<h4><%= slang['slang'] %> </h4>
+<h1>The Database</h1>
+
+<% @slangs.each do |slang| %>
+<h5><%= slang['slang'] %> </h5>
 <li><strong>Meaning:</strong> <%= slang['meaning'] %> </li> 
 <li><strong>Type:</strong> <%= slang['type'] %> </li> 
 <li><strong>Country:</strong> <%= slang['name_country'] %> </li>
 <li><strong>Are people using it right now? </strong> <%= slang['is_it_in'] %> </li>
 <li><strong>Example:</strong>  <%= slang['example'] %></li>
 <li><strong>Last update request:</strong>  <%= slang['date_r'] %></li>
-
-</ul>
-
-<h3>Comics</h3>
-
-<%= @images[rand(0 .. 3)].to_s %>
-<!-- I don't know why this doesn't work -->
+<% end %>
 
 </body>
 </html>
