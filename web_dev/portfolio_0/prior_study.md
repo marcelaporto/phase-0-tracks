@@ -40,6 +40,9 @@ As programmers we have to find common patterns and try to automate them away. On
 ```
 This simply takes the common HTML at the top and bottom of every template and puts it into one file. The code <%= yield %> is a Ruby thing that says to stop there and run the other view then come back.
 
+## Using Sinatra in Ruby
+
+Sinatra is not a framework but a library i.e. a set of classes that allows you to build almost any kind of web-based solution (no matter what the complexity) in a very simple manner, on top of the abstracted HTTP layer it implements from Rack. When you code in Sinatra you’re bound only by HTTP and your Ruby knowledge. Sinatra doesn’t force anything on you, which can lead to awesome or evil code, in equal measures.
 
 
 
@@ -54,7 +57,8 @@ This simply takes the common HTML at the top and bottom of every template and pu
 
 
 
- Why is it considered a bad idea to run programs as the root user on a Linux system?
+
+## Why is it considered a bad idea to run programs as the root user on a Linux system?
 
 You're logged as root = all applications are running with root privilegies -- every vulnerability in Firefox, Flash, OpenOffice etc. now can destroy your system, because possible viruses now have access everywhere. Yes, there are only few viruses for Ubuntu/Linux, but it's also because of good security and default unprivileged user.
 
