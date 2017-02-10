@@ -44,19 +44,46 @@ This simply takes the common HTML at the top and bottom of every template and pu
 
 Sinatra is not a framework but a library i.e. a set of classes that allows you to build almost any kind of web-based solution (no matter what the complexity) in a very simple manner, on top of the abstracted HTTP layer it implements from Rack. When you code in Sinatra you’re bound only by HTTP and your Ruby knowledge. Sinatra doesn’t force anything on you, which can lead to awesome or evil code, in equal measures.
 
+## Inline Templates
 
+1. Install de slim gem: `gem install slim`
+2. Create inline tmeplates. Ex:
 
+```
+require 'sinatra' 
+require 'slim'
 
+get '/' do 
+  slim :index 
+end
 
+__END__
 
+@@layout 
+doctype html 
+html
+  head 
+    meta charset="utf-8" 
+    title Just Do It 
+    link rel="stylesheet" media="screen, projection" href="/styles.css" 
+    /[if lt IE 9] 
+      script src="http://html5shiv.googlecode.com/svn/trunk/html5.js" 
+  body 
+    h1 Just Do It 
+    == yield 
 
+@@index 
+h2 My Tasks
+ul.tasks
+  li Get Milk
 
+```
 
+This is an example of Sinatra’s inline templates, something I consider to be a killer feature as it allows you to keep all your code in the same file – perfect for putting things together quickly. Inline templates always come after the __END__ declaration, and each template begins with @@.
 
+I’ve also included a template called ‘@@layout’. This will automatically be rendered with every view and provides a basic HTML5 scaffolding. The key line in the layout template is right at the end (==yield). The yield statement renders the content from the whichever template was requested by the handler (in this case, ‘index’).
 
-
-
-
+Both of these views use Slim’s minimal syntax. I find this makes writing HTML a much more pleasant experience, but be warned – Slim is white-space sensitive. Indentations of 2 spaces are used to nest elements within each other and Slim is very strict about this being consistent.
 
 ## Why is it considered a bad idea to run programs as the root user on a Linux system?
 
