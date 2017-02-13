@@ -8,13 +8,17 @@
 <h1>The Database</h1>
 
 <% @slangs.each do |slang| %>
-<h5><%= slang['slang'] %> </h5>
+<div class = "eachSlang">
+<br>
+<h4><%= slang['slang'] %> </h4>
 <li><strong>Meaning:</strong> <%= slang['meaning'] %> </li> 
 <li><strong>Type:</strong> <%= slang['type'] %> </li> 
 <li><strong>Country:</strong> <%= slang['name_country'] %> </li>
 <li><strong>Are people using it right now? </strong> <%= slang['is_it_in'] %> </li>
 <li><strong>Example:</strong>  <%= slang['example'] %></li>
 <li><strong>Last update request:</strong>  <%= slang['date_r'] %></li>
+<br>
+</div>
 <% end %>
 
 </body>

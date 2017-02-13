@@ -77,3 +77,59 @@ get '/all' do
 	erb :all
 end
 
+get '/filter' do
+	erb :filter
+end
+
+post '/filter/:word' do
+	word = params['word']
+	define_column(slang_db, word)
+
+end
+
+# How to do methods in Sinatra??
+
+
+# def define_column(db, condition)
+
+# 	condition_d = condition.downcase
+# 	column = ''
+
+# 	# Generate arrays to make comparison - tried to do an array_creator(db), but it won't recognize all the arrays generated inside the method.
+# 	# And I can't do a nested each method to generate array because each data comes from a different table
+# 	column_in =['true', 'false']
+
+# 	column_countries = [ ]
+# 	countries = db.execute ("SELECT name_country FROM country")
+# 	countries.each do |hash|
+# 		column_countries << hash['name_country'].downcase
+# 	end
+	
+# 	column_type = [ ]
+# 	types = db.execute ("SELECT type FROM type")
+# 	types.each do |hash|
+# 		column_type << hash['type'].downcase
+# 	end
+
+# 	column_slang = []
+# 	slangs = db.execute("SELECT slang FROM slang_dict")
+# 	slangs.each do |hash|
+# 		column_slang << hash['slang'].downcase
+# 	end
+
+# #  Do case statement with arrays and condition
+# 	case 
+# 	when (column_in.include? condition_d)
+# 		column = 'slang_dict.is_it_in'
+# 	when (column_type.include? condition_d)
+# 		column = 'type.type'
+# 	when (column_countries.include? condition_d)
+# 		column = 'country.name_country'
+# 	when (column_slang.include? condition_d)
+# 		column = 'slang_dict.slang'
+# 	else
+# 		print "We couldn't understand your condition! Please try again"
+# 		exit # Couldn't find a way to exit method and get back to home_message without starting a loophole. This is the best command I found. Any tips?
+# 	end
+# 	column
+# end
